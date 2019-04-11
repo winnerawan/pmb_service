@@ -16,5 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('news', 'NewsController@index');
 Route::get('infos', 'InfoController@index');
-Route::get('infoBiaya', 'InfoController@infoBiaya');
+Route::get('infos/cost', 'InfoController@cost');
+Route::get('infos/track', 'InfoController@track');
+
