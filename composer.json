@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "paquettg/php-html-parser": "^2.0",
         "sunra/php-simple-html-dom-parser": "^1.5",
         "weidner/goutte": "^1.1"
     },
