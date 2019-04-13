@@ -20,4 +20,4 @@ Route::get('news', 'NewsController@index');
 Route::get('infos', 'InfoController@index');
 Route::get('infos/cost', 'InfoController@cost');
 Route::get('infos/track', 'InfoController@track');
-
+Route::get('infos/schedule', 'InfoController@schedule');
