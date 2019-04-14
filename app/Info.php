@@ -48,18 +48,18 @@ class Info extends Model
                     ),
                     array(
                         "id" => 2,
-                        "title" => "Agenda",
-                        "url" => "http://unipma.ac.id/daftar-agenda.php"
-                    ),
-                    array(
-                        "id" => 3,
                         "title" => "Akreditasi",
                         "url" => "http://unipma.ac.id/akademik/akreditasi.php"
                     ),
                     array(
-                        "id" => 4,
+                        "id" => 3,
                         "title" => "Kalender Akademik",
                         "url" => "http://unipma.ac.id/akademik/kalender.php"
+                    ),
+                    array(
+                        "id" => 4,
+                        "title" => "Video Profile",
+                        "url" => "http://unipma.ac.id/daftar-agenda.php"
                     )
                 );
         
