@@ -36,4 +36,33 @@ class Info extends Model
         
         return $infos;
     }
+
+    public static function getMenuInfos() {
+        
+        $infos = 
+                array(
+                    array(
+                        "id" => 1,
+                        "title" => "Program Study",
+                        "url" => "http://unipma.ac.id/akademik/prodi.php"
+                    ),
+                    array(
+                        "id" => 1,
+                        "title" => "Agenda",
+                        "url" => "http://unipma.ac.id/daftar-agenda.php"
+                    ),
+                    array(
+                        "id" => 3,
+                        "title" => "Akreditasi",
+                        "url" => "http://unipma.ac.id/akademik/akreditasi.php"
+                    ),
+                    array(
+                        "id" => 4,
+                        "title" => "Kalender Akademmik",
+                        "url" => "http://unipma.ac.id/akademik/kalender.php"
+                    )
+                );
+        
+        return $infos;
+    }
 }

@@ -41,4 +41,8 @@ class InfoController extends Controller
         echo json_encode($data);
 
     }
+
+    public function infoMenu() {
+        return \App\Info::getMenuInfos();
+    }
 }
