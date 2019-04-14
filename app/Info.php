@@ -58,7 +58,7 @@ class Info extends Model
                     ),
                     array(
                         "id" => 4,
-                        "title" => "Kalender Akademmik",
+                        "title" => "Kalender Akademik",
                         "url" => "http://unipma.ac.id/akademik/kalender.php"
                     )
                 );
