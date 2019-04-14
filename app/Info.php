@@ -47,7 +47,7 @@ class Info extends Model
                         "url" => "http://unipma.ac.id/akademik/prodi.php"
                     ),
                     array(
-                        "id" => 1,
+                        "id" => 2,
                         "title" => "Agenda",
                         "url" => "http://unipma.ac.id/daftar-agenda.php"
                     ),
