@@ -26,7 +26,7 @@ class NewsController extends Controller
         foreach($html->find('.img-thumbnail') as $i => $a0){
             $style = $a0->style;
             preg_match('/\(([^)]+)\)/', $style, $match);
-            $data[$i]['image'] = $match[1];
+            $data[$i]['image'] = str_replace("'", "", $match[1]);
             foreach($html->find('.portfolio-details a > h5') as $i => $item) {
                 $data[$i]['title'] = $item->innertext;
                 foreach($html->find('.portfolio-details a > a') as $x => $l) {

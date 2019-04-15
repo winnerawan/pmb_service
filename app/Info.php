@@ -59,7 +59,7 @@ class Info extends Model
                     array(
                         "id" => 4,
                         "title" => "Video Profile",
-                        "url" => "http://unipma.ac.id/daftar-agenda.php"
+                        "url" => "http://unipma.ac.id/tentang/video.php"
                     )
                 );
         
