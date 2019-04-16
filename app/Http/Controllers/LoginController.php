@@ -23,7 +23,7 @@ class LoginController extends Controller
         $sql = DB::select($query);   
         $info = new \stdClass();
         // var_dump($sql);
-        if (sizeof($sql)>=0) {
+        if (sizeof($sql)>=1) {
             // $info['status'] = $sql['status'];
             echo json_encode(array("error" => false, "message" => "Successfuly Login", "info" => $sql[0]));
         } else {
