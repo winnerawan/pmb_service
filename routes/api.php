@@ -25,3 +25,4 @@ Route::get('infos/schedule', 'InfoController@schedule');
 Route::get('search', 'SearchController@search');
 Route::get('news', 'NewsController@news');
 Route::get('menus', 'InfoController@infoMenu');
+Route::post('login', 'LoginController@login');
