@@ -24,5 +24,6 @@ Route::get('infos/track', 'InfoController@track');
 Route::get('infos/schedule', 'InfoController@schedule');
 Route::get('search', 'SearchController@search');
 Route::get('news', 'NewsController@news');
+Route::get('newsDetail', 'NewsController@newsDetail');
 Route::get('menus', 'InfoController@infoMenu');
 Route::post('login', 'LoginController@login');

@@ -43,4 +43,26 @@ class NewsController extends Controller
         }
         echo json_encode($data);
     }
+
+    public function newsDetail(Request $request) {
+        $link = $request['link'];
+        $html = HtmlDomParser::file_get_html($link, false, null, 0);
+        $detail = new \stdClass();
+        $penulis = $html->find('.post-content ul > li');
+        $teks = array();
+        $detail->writter = trim($penulis[0]);
+        $detail->date = trim($penulis[1]);
+        $detail->first = $html->find('.post-content > p', 0)->innertext;
+        $pp = $html->find('.post-content > p');
+        foreach($pp as $p) {
+            $teks[] = $p->innertext;
+
+        }
+        $text = array_shift($teks);
+        $detail->center = implode(" ", $teks);
+
+        $detail->image = $html->find('.post-head > img', 0)->src;
+        $detail->link = $link;
+        echo json_encode($detail);
+    }
 }
