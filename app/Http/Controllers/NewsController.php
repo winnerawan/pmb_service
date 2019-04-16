@@ -41,12 +41,6 @@ class NewsController extends Controller
             }
             $i++;
         }
-        // $newdata = $data;
-        // for ($i=0; $i<sizeof($data); $i++) {
-        //     if ($i++ == 7) break;
-        //     echo json_encode($data);
-
-        // }
         echo json_encode($data);
     }
 

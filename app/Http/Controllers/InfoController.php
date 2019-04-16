@@ -32,11 +32,9 @@ class InfoController extends Controller
 
     public function cost(Request $request) {
         $link = $request['link'];
-//var_dump($request['link']);
         $html = HtmlDomParser::file_get_html($link, false, null, 0);
         $table = $html->find('table', 0);    
         $data = new \stdClass();
-        $css = array("<link rel='stylesheet' href='http://pmb.unipma.ac.id/asset/css/bootstrap.min.css'");
         $data->content = (string) $table;
         echo json_encode($data);
 
@@ -44,5 +42,40 @@ class InfoController extends Controller
 
     public function infoMenu() {
         return \App\Info::getMenuInfos();
+    }
+
+    public function getCost() {
+        $link = "http://pmb.unipma.ac.id/biaya";
+        $html = HtmlDomParser::file_get_html($link, false, null, 0);
+
+        $htmlContent = file_get_contents($link);
+        $DOM = new \DOMDocument();
+        @$DOM->loadHTML($htmlContent);
+        $Header = $DOM->getElementsByTagName('tr')->item(0)->getElementsByTagName('td');
+        $Detail = $DOM->getElementsByTagName('td');
+        foreach($Header as $NodeHeader) {
+            $aDataTableHeaderHTML[] = trim($NodeHeader->textContent);
+        }
+        $i = 0;
+        $j = 0;
+        foreach($Detail as $sNodeDetail) {
+            $aDataTableDetailHTML[$j][] = trim($sNodeDetail->textContent);
+            $i = $i + 1;
+            $j = $i % count($aDataTableHeaderHTML) == 0 ? $j + 1 : $j;
+        }
+        array_shift($aDataTableDetailHTML);
+        array_pop($aDataTableDetailHTML);
+        $costs = array();
+        foreach($aDataTableDetailHTML as $x => $cost) {
+            $costs[$x]['program_study'] = $cost[1];
+            $costs[$x]['biaya_semester'] = $cost[2];
+            $costs[$x]['pkkmb'] = $cost[3];
+            $costs[$x]['pbi_gel1'] = $cost[4];
+            $costs[$x]['pbi_gel2'] = $cost[5];
+            $costs[$x]['pbi_gel3'] = $cost[6];
+        }
+        echo json_encode($costs);
+        
+        // return response()->json($costs);
     }
 }
