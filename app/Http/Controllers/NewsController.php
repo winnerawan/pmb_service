@@ -41,6 +41,12 @@ class NewsController extends Controller
             }
             $i++;
         }
+        // $newdata = $data;
+        // for ($i=0; $i<sizeof($data); $i++) {
+        //     if ($i++ == 7) break;
+        //     echo json_encode($data);
+
+        // }
         echo json_encode($data);
     }
 
@@ -56,7 +62,7 @@ class NewsController extends Controller
         $detail->first = $html->find('.post-content > p', 0)->innertext;
         $pp = $html->find('.post-content > p');
         foreach($pp as $p) {
-            $teks[] = $p->innertext;
+            $teks[] = $p;
 
         }
         $text = array_shift($teks);
