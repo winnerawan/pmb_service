@@ -12,11 +12,11 @@ class LoginController extends Controller
         $table_2 = "bayar_manual";
         $username = $request['username'];
         $password = $request['password'];
-        $query = "SELECT username, password, status
+        $query = "SELECT username, password, status, nama_mhs
                     FROM bayar_online
                     WHERE username='$username' AND password='$password' 
                     UNION 
-                    SELECT username, password, status
+                    SELECT username, password, status, pembeli
                     FROM bayar_manual 
                     WHERE username='$username' AND password='$password'";
 
