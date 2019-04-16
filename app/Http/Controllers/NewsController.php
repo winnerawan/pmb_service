@@ -51,7 +51,7 @@ class NewsController extends Controller
         $penulis = $html->find('.post-content ul > li');
         $teks = array();
         $detail->title = trim($html->find('.post-content > h2', 0)->innertext);
-        $detail->writter = trim($penulis[0]);
+        $detail->writer = trim($penulis[0]);
         $detail->date = trim($penulis[1]);
         $detail->first = $html->find('.post-content > p', 0)->innertext;
         $pp = $html->find('.post-content > p');
