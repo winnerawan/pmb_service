@@ -76,6 +76,23 @@ class InfoController extends Controller
         }
         echo json_encode($costs);
         
-        // return response()->json($costs);
+    }
+
+    public function getCalendarAcademic() {
+        $link = "http://unipma.ac.id/akademik/kalender.php";
+        $html = HtmlDomParser::file_get_html($link, false, null, 0);
+
+        $pdf = $html->find('iframe', 0)->src;
+        echo json_encode(["pdf" => $pdf]);
+    }
+
+    public function getProgramStudy() {
+        $link = "https://gist.githubusercontent.com/winnerawan/91ac4ea38009bc3b1b9e88b54f0a0ecb/raw/0bc71e1ba0fd70a227f9a67ce1d3d374f6f82580/program_study.json";
+        $html = file_get_contents($link);
+
+        $prodys = json_decode($html, true);
+
+        echo json_encode($prodys);
+
     }
 }

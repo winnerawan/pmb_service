@@ -28,3 +28,5 @@ Route::get('newsDetail', 'NewsController@newsDetail');
 Route::get('menus', 'InfoController@infoMenu');
 Route::post('login', 'LoginController@login');
 Route::get('/cost', 'InfoController@getCost'); 
+Route::get('/calendar', 'InfoController@getCalendarAcademic'); 
+Route::get('/prody', 'InfoController@getProgramStudy'); 
