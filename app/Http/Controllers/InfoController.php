@@ -88,8 +88,7 @@ class InfoController extends Controller
 
     public function getProgramStudy() {
         
-        $link = 'https://gist.githubusercontent.com/winnerawan/356034cafa8402c385b8a72fcf99defd/raw/1fa99317e05a9340301c2fedd4158868cd7988a6/faculties.json';
-        $html = file_get_contents("https://gist.githubusercontent.com/winnerawan/356034cafa8402c385b8a72fcf99defd/raw/1fa99317e05a9340301c2fedd4158868cd7988a6/faculties.json");
+        $html = file_get_contents("https://gist.githubusercontent.com/winnerawan/356034cafa8402c385b8a72fcf99defd/raw/4b09a551c9f9bec8fcb5a61a8663c0daf5fb29c4/faculties.json");
 
         $prodys = json_decode($html, true);
 
