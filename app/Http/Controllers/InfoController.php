@@ -87,8 +87,9 @@ class InfoController extends Controller
     }
 
     public function getProgramStudy() {
-        $link = "https://gist.githubusercontent.com/winnerawan/91ac4ea38009bc3b1b9e88b54f0a0ecb/raw/0bc71e1ba0fd70a227f9a67ce1d3d374f6f82580/program_study.json";
-        $html = file_get_contents($link);
+        
+        $link = 'https://gist.githubusercontent.com/winnerawan/356034cafa8402c385b8a72fcf99defd/raw/1fa99317e05a9340301c2fedd4158868cd7988a6/faculties.json';
+        $html = file_get_contents("https://gist.githubusercontent.com/winnerawan/356034cafa8402c385b8a72fcf99defd/raw/1fa99317e05a9340301c2fedd4158868cd7988a6/faculties.json");
 
         $prodys = json_decode($html, true);
 
