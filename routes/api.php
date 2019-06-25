@@ -30,3 +30,12 @@ Route::post('login', 'LoginController@login');
 Route::get('/cost', 'InfoController@getCost'); 
 Route::get('/calendar', 'InfoController@getCalendarAcademic'); 
 Route::get('/prody', 'InfoController@getProgramStudy'); 
+
+Route::get('/trackchoice', 'ProcessController@trackChoice');
+
+
+Route::post('insert_pmdk', 'ProcessController@insertPMDK');
+Route::post('insert_pnuan', 'ProcessController@insertPNUAN');
+Route::post('insert_biodata', 'ProcessController@insertBiodata');
+Route::get('/no_reg', 'ProcessController@getNoReg');
+Route::get('/years', 'ProcessController@getYears');
