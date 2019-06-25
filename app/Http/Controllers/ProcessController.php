@@ -40,7 +40,7 @@ class ProcessController extends Controller
      * Isi nilai raport di tabel jalur_pmdk 
      */
     public function insertPMDK(Request $request) {
-        $no_reg = \App\Process::generateNoReg(\App\Process::generateTahunMini());
+        $no_reg = $request->no_reg;
         $bind = $request->bind;
         $bind1 = $request->bind1;
         $bind2 = $request->bind2;
@@ -92,7 +92,7 @@ class ProcessController extends Controller
      * Lengkapi biodata (update table mahasiswa)
      */
     public function insertBiodata(Request $request) {
-        $no_reg = $request->no_reg;
+        $no_reg = \App\Process::generateRegistrationNumber(\App\Process::generateTahunMini());
         $nama = $request->nama;
         $no_ktp = $request->no_ktp;
         $nisn = ""; //$request->nisn;
@@ -128,7 +128,7 @@ class ProcessController extends Controller
         $tgl_daftar = $request->tgl_daftar;
         $tahun_masuk = $request->tahun_masuk;
         $jalur = $request->jalur;
-        $gelombang = $request->gelombang;
+        $gelombang = "GELOMBANG 1"; //$request->gelombang;
 
         $size = "";
         $idkecamatan = "";
@@ -143,7 +143,9 @@ class ProcessController extends Controller
             $size, $idkecamatan, $idkota, $idprovinsi, $kodedikti]);
 
         if ($record) {
-                return response()->json(['error' => false, 'pmdk' => $record]);
+
+            $mahasiswa = DB::select('SELECT * FROM mahasiswa WHERE no_reg = ?', [$no_reg]);
+                return response()->json(['error' => false, 'mahasiswa' => $mahasiswa[0]]);
         }
         return response()->json(['error' => true]);
     }
