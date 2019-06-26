@@ -77,7 +77,33 @@ class ProcessController extends Controller
      *  isi nilai sesuai ijazaha di tabel jalur_pnuan
      */
     public function insertPNUAN(Request $request) {
-        
+        $no_reg = $request->no_reg;
+        $nilai1 = $request->nilai1;
+        $nilai2 = $request->nilai2;
+        $nilai3 = $request->nilai3;
+        $nilai4 = $request->nilai4;
+        $nilai5 = $request->nilai5;
+        $nilai6 = $request->nilai6;
+
+        $uas1 = (int) $nilai1;
+        $uas2 = (int) $nilai2;
+        $uas3 = (int) $nilai3;
+        $uas4 = (int) $nilai4;
+        $uas5 = (int) $nilai5;
+        $uas6 = (int) $nilai6;
+
+        $nun = ($uas1 + $uas2 + $uas3 + $uas4 + $uas5 +$uas6) / 6;
+
+        $record = DB::insert('insert into jalur_uan (no_reg, nilai1, nilai2, nilai3, nilai4, nilai5, nilai6, nun, nilai1a, nilai2a, nilai3a, nilai4a, nilai5a, nilai6a, nuna) values 
+                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                     [$no_reg, $nilai1, $nilai2, $nilai3, $nilai4, $nilai5, $nilai6, $nun, 
+                     '', '', '', '', '', '', '']);
+
+        if ($record) {
+            $pnuan = DB::select('select * from jalur_uan where no_reg = ?', [$no_reg]);
+            return response()->json(['error' => false, 'pnuan' => $pnuan]);
+        }
+        return response()->json(['error' => true]);
     }
 
 
