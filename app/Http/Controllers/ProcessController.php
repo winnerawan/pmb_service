@@ -216,6 +216,7 @@ class ProcessController extends Controller
         $method = DB::select($sql);
         // dd($method);
         $tablename = 'bayar_'.$method[0]->table_info;
+        // dd($tablename);
         // $tablename = strtolower($tablename);
 
         $sql2 = DB::update('update '.$tablename.' set status = '.$status.' where username = ?', [$username]);
