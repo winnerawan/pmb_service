@@ -34,8 +34,10 @@ Route::get('/prody', 'InfoController@getProgramStudy');
 Route::get('/trackchoice', 'ProcessController@trackChoice');
 
 
-Route::post('insert_pmdk', 'ProcessController@insertPMDK');
-Route::post('insert_pnuan', 'ProcessController@insertPNUAN');
-Route::post('insert_biodata', 'ProcessController@insertBiodata');
+Route::post('/insert_pmdk', 'ProcessController@insertPMDK');
+Route::post('/insert_pnuan', 'ProcessController@insertPNUAN');
+Route::post('/insert_biodata', 'ProcessController@insertBiodata');
+Route::post('/insert_choosen_program', 'ProcessController@insertChoice');
 Route::get('/no_reg', 'ProcessController@getNoReg');
 Route::get('/years', 'ProcessController@getYears');
+Route::put('/updatestatus', 'ProcessController@updateStatus');

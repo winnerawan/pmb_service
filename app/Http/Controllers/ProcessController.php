@@ -169,7 +169,34 @@ class ProcessController extends Controller
         
     }
 
-    public function insertChoice() {
-        $record = DB::insert('insert into pilihan (id_pil, no_reg, pil_1, pil_2) values (?, ?, ?, ?)', [1, 'Dayle']);
+    public function insertChoice(Request $request) {
+        $no_reg = $request->no_reg;
+        $pil1 = $request->pil_1;
+        $pil2 = $request->pil_2;
+        $record = DB::insert('insert into pilihan (no_reg, pil_1, pil_2, diterimadi, gelombang, kelas, bpi, bpenunjang, bsem, bpkkmb, bksore, btotal, bspp, bher, buk, bpplp, bkopma, bukm, bperpus, bjurnal, basuransi, bktm, bospek) values (?, ?, ?, "DALAM PROSES", "GELOMBANG 1", "", 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)', [$no_reg, $pil1, $pil2]);
+
+        if ($record) {
+            $pilihan = DB::select('SELECT * FROM pilihan WHERE no_reg = ?', [$no_reg]);
+                return response()->json(['error' => false, 'pilihan' => $pilihan[0]]);
+        }
+        return response()->json(['error' => true]);
+    }
+
+    public function updateStatus(Request $request) {
+        $username = $request->username;
+        $status = $request->status;
+
+        $sql = "SELECT username, IF(username != NULL, 'ONLINE', 'ONLINE') AS table_info FROM bayar_online WHERE username = '$username' UNION SELECT username, IF(username != NULL, 'MANUAL', 'MANUAL') AS table_info FROM bayar_manual WHERE username = '$username'";
+        $method = DB::select($sql);
+        // dd($method);
+        $tablename = 'bayar_'.$method[0]->table_info;
+
+        $sql2 = DB::update('update '.$tablename.' set status = '.$status.' where username = ?', [$username]);
+
+        if ($sql2) {
+            $info = DB::select('SELECT * FROM '.$tablename.' WHERE username = ?', [$username]);
+                return response()->json(['error' => false, 'info' => $info[0]]);
+        }
+        return response()->json(['error' => true]);
     }
 }
