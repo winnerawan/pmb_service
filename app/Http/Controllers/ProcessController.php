@@ -212,11 +212,11 @@ class ProcessController extends Controller
         $username = $request->username;
         $status = $request->status;
 
-        $sql = "SELECT username, IF(username != NULL, 'ONLINE', 'ONLINE') AS table_info FROM bayar_online WHERE username = '$username' UNION SELECT username, IF(username != NULL, 'MANUAL', 'MANUAL') AS table_info FROM bayar_manual WHERE username = '$username'";
+        $sql = "SELECT username, IF(username != NULL, 'online', 'online') AS table_info FROM bayar_online WHERE username = '$username' UNION SELECT username, IF(username != NULL, 'manual', 'manual') AS table_info FROM bayar_manual WHERE username = '$username'";
         $method = DB::select($sql);
         // dd($method);
         $tablename = 'bayar_'.$method[0]->table_info;
-        $tablename = strtolower($tablename);
+        // $tablename = strtolower($tablename);
 
         $sql2 = DB::update('update '.$tablename.' set status = '.$status.' where username = ?', [$username]);
 
