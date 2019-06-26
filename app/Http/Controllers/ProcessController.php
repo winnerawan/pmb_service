@@ -225,4 +225,27 @@ class ProcessController extends Controller
         }
         return response()->json(['error' => true]);
     }
+
+    public function checkStatus(Request $request) {
+        $table_1 = "bayar_online";
+        $table_2 = "bayar_manual";
+        $username = $request['username'];
+        $query = "SELECT username, password, status, nama_mhs
+                    FROM bayar_online
+                    WHERE username='$username' 
+                    UNION 
+                    SELECT username, password, status, pembeli
+                    FROM bayar_manual 
+                    WHERE username='$username'";
+
+        $sql = DB::select($query);   
+        $info = new \stdClass();
+        // var_dump($sql);
+        if (sizeof($sql)>=1) {
+            // $info['status'] = $sql['status'];
+            echo json_encode(array("error" => false, "message" => "Successfuly", "info" => $sql[0]));
+        } else {
+            echo json_encode(array("error" => true, "message" => "Wrong Authentication"));
+        }
+    }
 }

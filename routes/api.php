@@ -41,3 +41,4 @@ Route::post('insert_choosen_program', 'ProcessController@insertChoice');
 Route::get('no_reg', 'ProcessController@getNoReg');
 Route::get('years', 'ProcessController@getYears');
 Route::put('updatestatus', 'ProcessController@updateStatus');
+Route::get('checkstatus', 'ProcessController@checkStatus');
